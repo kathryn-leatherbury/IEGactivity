@@ -1,0 +1,21 @@
+Package: IEGactivity
+Title: Immediate Early Gene Activity Analysis
+Version: 0.0.1
+Authors@R:
+    person("kathryn-leatherbury", , , "kleatherbury3@gatech.edu",
+           role = c("aut", "cre"))
+Description: Functions for immediate early gene analyses in single-cell
+    multi-omics workflows. Computes per-nucleus scores from Seurat expression
+    and count data, with optional variance-based gene weighting within cell
+    types and user-specified groups.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Imports:
+    Matrix,
+    SeuratObject (>= 5.0.0),
+    stats,
+    utils
+URL: https://github.com/kathryn-leatherbury/IEGactivity
+BugReports: https://github.com/kathryn-leatherbury/IEGactivity/issues
+RoxygenNote: 7.3.3
