@@ -1,0 +1,9 @@
+bibentry(
+  bibtype = "Manual",
+  title = "IEGactivity: streamlining the implementation of immediate early gene activity analyses from multi-modal single-cell data",
+  author = person(given = c("Kathryn", "N."), family = "Leatherbury"),
+  year = "2026",
+  organization = "GitHub",
+  note = "R package version 0.0.1",
+  url = "https://github.com/kathryn-leatherbury/IEGactivity"
+)

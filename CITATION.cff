@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use IEGactivity, please cite the software using the preferred citation below."
+type: software
+authors:
+  - family-names: "Leatherbury"
+    given-names: "Kathryn N."
+title: "IEGactivity: streamlining the implementation of immediate early gene activity analyses from multi-modal single-cell data"
+version: "0.0.1"
+url: "https://github.com/kathryn-leatherbury/IEGactivity"
+repository-code: "https://github.com/kathryn-leatherbury/IEGactivity"
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Leatherbury"
+      given-names: "Kathryn N."
+  title: "IEGactivity: streamlining the implementation of immediate early gene activity analyses from multi-modal single-cell data"
+  year: 2026
+  version: "0.0.1"
+  publisher:
+    name: "GitHub"
+  url: "https://github.com/kathryn-leatherbury/IEGactivity"

@@ -1,3 +1,4 @@
+# BEGIN: make expression-score scaling configurable while retaining the default factor of 100.
 #' Compute per-nucleus immediate early gene scores
 #'
 #' Calculates IEG scores from expression or count data in a Seurat object.
@@ -14,6 +15,8 @@
 #' @param scoring.method Either "expression" or "count". Expression uses normalized gene expression scores. Count uses a sum of IEG counts per nucleus.
 #' @param norm.weights Default TRUE. Apply weighted normalization using se variance-based gene weights for
 #'   expression scoring; if FALSE, weight genes equally.
+#' @param scale.factor Numeric multiplier applied to expression scores. Defaults
+#'   to 100. Not used for count scoring.
 #'
 #' @return A named numeric vector with one score per nucleus in the selected
 #'   assay layer.
@@ -37,7 +40,8 @@ ComputeIEGscore <- function(
     sample.id,
     group.by       = NULL,
     scoring.method = 'expression',  # options either expression or count
-    norm.weights   = TRUE # normalize across samples by applying equal weights and standardize by group level if group.by is set
+    norm.weights   = TRUE, # normalize across samples by applying equal weights and standardize by group level if group.by is set
+    scale.factor   = 100
 ) {
   if (!requireNamespace("SeuratObject", quietly = TRUE)) stop("SeuratObject is required.")
   if (!scoring.method %in% c("count", "expression")) {
@@ -110,7 +114,7 @@ ComputeIEGscore <- function(
         } else {
           w <- rep(1 / G, G)
         }
-        score[ct_cells] <- as.numeric(w %*% mat[, ct_cells, drop = FALSE]) * 100
+        score[ct_cells] <- as.numeric(w %*% mat[, ct_cells, drop = FALSE]) * scale.factor
       }
       return(score)
     }
@@ -158,7 +162,7 @@ ComputeIEGscore <- function(
           w <- rep(1 / G, G)
         }
         j <- status_cells[[s]]
-        score[j] <- as.numeric(w %*% mat[, j, drop = FALSE]) * 100
+        score[j] <- as.numeric(w %*% mat[, j, drop = FALSE]) * scale.factor
       }
     }
   } else if (scoring.method == "expression" && norm.weights == FALSE) {
@@ -177,7 +181,7 @@ ComputeIEGscore <- function(
       ## retain the package argument name assay.
     ))
     n_ieg <- length(iegs)
-    score <- (Matrix::colSums(mat, na.rm = TRUE)/n_ieg) * 100
+    score <- (Matrix::colSums(mat, na.rm = TRUE)/n_ieg) * scale.factor
     score[score == 'NaN'] = 0
   } else if (scoring.method == 'count'){
     # RUN IF FUNCTION IS SET TO COUNT
@@ -199,3 +203,4 @@ ComputeIEGscore <- function(
   }
   score
 }
+# END: configurable expression-score scaling.

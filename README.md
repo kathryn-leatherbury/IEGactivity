@@ -20,10 +20,10 @@ in the selected assay layer.
 
 - **Weighted expression:** `scoring.method = "expression"` and
   `norm.weights = TRUE` (the defaults). Calculates a weighted mean of the
-  requested IEG expression values, multiplied by 100.
+  requested IEG expression values, scaled by `scale.factor` (100 by default).
 - **Unweighted expression:** `scoring.method = "expression"` and
   `norm.weights = FALSE`. Calculates the mean of the requested IEG expression
-  values, multiplied by 100.
+  values, scaled by `scale.factor` (100 by default).
 - **Count:** `scoring.method = "count"`. Converts positive entries in the
   requested IEG count matrix to 1, then sums them for each nucleus.
 

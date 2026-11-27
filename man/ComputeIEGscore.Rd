@@ -12,7 +12,8 @@ ComputeIEGscore(
   sample.id,
   group.by = NULL,
   scoring.method = "expression",
-  norm.weights = TRUE
+  norm.weights = TRUE,
+  scale.factor = 100
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ each cell type for variance estimation. NULL uses the cell type alone.}
 
 \item{norm.weights}{Default TRUE. Apply weighted normalization using se variance-based gene weights for
 expression scoring; if FALSE, weight genes equally.}
+
+\item{scale.factor}{Numeric multiplier applied to expression scores. Defaults
+to 100. Not used for count scoring.}
 }
 \value{
 A named numeric vector with one score per nucleus in the selected
